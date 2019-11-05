@@ -201,16 +201,24 @@ class GcodeExport(inkex.Effect):
 			reader = png.Reader(pos_file_png_exported)#PNG files generated
 			w, h, pixels, metadata = reader.read_flat()
 			file_testgcode = open(posDimTest_file_gcode, 'w')  #Create the dimenstional test file
-			file_testgcode.write('; Generated with:\n; "Raster 2 Laser Gcode generator"\n; by 305 Engineering\n; With a remix by Candler Customs\n;\n;\n')
+			file_testgcode.write('; Generated with:\n; "Raster 2 Laser Gcode generator"\n; by 305 Engineering\n; With a remix by VE7FRG\n;\n;\n')
 			file_testgcode.write('G21; Set units to millimeters\n')			
 			file_testgcode.write('G90; Use absolute coordinates\n')				
 			file_testgcode.write('G92; Coordinate Offset\n')
+
 			if self.options.homing == 1:
-				file_testgcode.write('G28 X0 Y0; home all axes\n')
-				file_testgcode.write('M42 P44 S0; Turn on LEDs\n')
+				file_gcode.write('G28 X0 Y0; home all axes\n')
+				file_gcode.write('M42 P44 S0; Turn on LEDs\n')
+				file_gcode.write('M42 P64 S0; Turn on VENT Fans\n')
 			elif self.options.homing == 2:
-				file_testgcode.write('$H; home all axes\n')
-			
+				file_gcode.write('$H; home all axes\n')
+			elif self.options.homing == 4:
+				file_gcode.write('G28 X0 Y0; home all axes\n')
+				file_gcode.write('G92 X-57 Y-37; Coordinate Offset for CR-10 Mini\n')
+				file_gcode.write('G0 Z100; Set laser head 100mm above surface\n')
+			else:
+				pass
+
 			file_testgcode.write(self.options.laseron + ' S' + str(self.options.Laser_Min) + '\n')
 			file_testgcode.write('; This is the number of width: '+ str(w) + '\n')
 			file_testgcode.write('; This is the number of height: '+ str(h) + '\n')
@@ -463,8 +471,12 @@ class GcodeExport(inkex.Effect):
 			file_gcode = open(pos_file_gcode, 'w')  #Create the file
 			
 			#Configurazioni iniziali standard Gcode
-			file_gcode.write('; Generated with:\n; "Raster 2 Laser Gcode generator"\n; by 305 Engineering\n; With a remix by Candler Customs\n;\n;\n')
+			file_gcode.write('; Generated with:\n; "Raster 2 Laser Gcode generator"\n; by 305 Engineering\n; With a remix by VE7FRG\n;\n;\n')
 			#HOMING
+
+			file_gcode.write('G21; Set units to millimeters\n')
+			file_gcode.write('G90; Use absolute coordinates\n')
+			file_gcode.write('G92; Coordinate Offset\n')
 			if self.options.homing == 1:
 				file_gcode.write('G28 X0 Y0; home all axes\n')
 				file_gcode.write('M42 P44 S0; Turn on LEDs\n')
@@ -473,12 +485,11 @@ class GcodeExport(inkex.Effect):
 				file_gcode.write('$H; home all axes\n')
 			elif self.options.homing == 4:
 				file_gcode.write('G28 X0 Y0; home all axes\n')
-				file_gcode.write('G90; Use absolute coordinates\n')
 				file_gcode.write('G92 X-57 Y-37; Coordinate Offset for CR-10 Mini\n')
 				file_gcode.write('G0 Z100; Set laser head 100mm above surface\n')
 			else:
 				pass
-			file_gcode.write('G21; Set units to millimeters\n')			
+
 #			file_gcode.write('G90; Use absolute coordinates\n')
 #			file_gcode.write('G92; Coordinate Offset\n')
 
