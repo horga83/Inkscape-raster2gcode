@@ -106,7 +106,7 @@
 		<!-- Where the script will appear in the extensions menu-->
 		<!--  " Extensions => 305 Engineering with Candler Customs Remix => Extension Test " -->
         <effects-menu>
-            <submenu name="305 Engineering with Candler Customs Remix"/>
+            <submenu name="305 Engineering with VE7FRG Remix"/>
         </effects-menu>
     </effect>
     
