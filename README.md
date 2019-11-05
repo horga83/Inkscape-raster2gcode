@@ -5,7 +5,7 @@
  -   Included additions from Chandler Customs such as turning on fan, adjusting laser power and dimensioning
  -   Added additional home for CR-10 Mini with a 2.5W laser
  -     Homes the head
- -     Changes the 0,0 offset to X-57 and Y-37 so the 0,0 head position is correct
+ -     Changes the 0,0 offset to X-47 and Y-27 so the 0,0 head position is correct
  -     Changes the Z height to 100mm which is what my laser requires.
 
 
