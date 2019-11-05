@@ -87,7 +87,7 @@
 		<_item value="1">G28 (Standard)</_item>
 		<_item value="2">$H (GRBL)</_item>
 		<_item value="3">No Homing</_item>
-   		<_item value="4">CR-10 Laser home X-57 Y-37 Z100</_item>
+   		<_item value="4">CR-10 Laser home X-47 Y-27 Z100</_item>
 	</param>
 	
 	<param name="laseron" type="string"  gui-text="Laser ON Command">M106</param>

@@ -213,8 +213,8 @@ class GcodeExport(inkex.Effect):
 			elif self.options.homing == 2:
 				file_testgcode.write('$H; home all axes\n')
 			elif self.options.homing == 4:
-				file_testgcode.write('G28 X0 Y0; home all axes\n')
-				file_testgcode.write('G92 X-57 Y-37; Coordinate Offset for CR-10 Mini\n')
+				file_testgcode.write('G28; home all axes\n')
+				file_testgcode.write('G92 X-47 Y-27; Coordinate Offset for CR-10 Mini\n')
 				file_testgcode.write('G0 Z100; Set laser head 100mm above surface\n')
 			else:
 				pass
@@ -478,14 +478,14 @@ class GcodeExport(inkex.Effect):
 			file_gcode.write('G90; Use absolute coordinates\n')
 			file_gcode.write('G92; Coordinate Offset\n')
 			if self.options.homing == 1:
-				file_gcode.write('G28 X0 Y0; home all axes\n')
+				file_gcode.write('G28; home all axes\n')
 				file_gcode.write('M42 P44 S0; Turn on LEDs\n')
 				file_gcode.write('M42 P64 S0; Turn on VENT Fans\n')
 			elif self.options.homing == 2:
 				file_gcode.write('$H; home all axes\n')
 			elif self.options.homing == 4:
 				file_gcode.write('G28 X0 Y0; home all axes\n')
-				file_gcode.write('G92 X-57 Y-37; Coordinate Offset for CR-10 Mini\n')
+				file_gcode.write('G92 X-47 Y-27; Coordinate Offset for CR-10 Mini\n')
 				file_gcode.write('G0 Z100; Set laser head 100mm above surface\n')
 			else:
 				pass
